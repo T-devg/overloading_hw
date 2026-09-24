@@ -293,3 +293,94 @@ Time_ Time_::operator-(long h) const & {
     tmp -= h;
     return tmp;
 }
+//T-25
+Time_& Time_::operator++() {
+    *this += 1;
+    return *this;
+}
+
+Time_ Time_::operator++(int) {
+    Time_ tmp = *this;
+    ++(*this);
+    return tmp;
+}
+
+Time_& Time_::operator--() {
+    *this -= 1;
+    return *this;
+}
+
+Time_ Time_::operator--(int) {
+    Time_ tmp = *this;
+    --(*this);
+    return tmp;
+}
+
+
+Time_ operator+(float seconds, const Time_& a) {
+    Time_ tmp = a;
+    tmp += seconds;
+    return tmp;
+}
+
+Time_ operator-(float seconds, const Time_& a) {
+    Time_ tmp = a;
+    tmp -= seconds;
+    return tmp;
+}
+
+
+Time_ operator+(int minutes, const Time_& a) {
+    Time_ tmp = a;
+    tmp += minutes;
+    return tmp;
+}
+
+Time_ operator-(int minutes, const Time_& a) {
+    Time_ tmp = a;
+    tmp -= minutes;
+    return tmp;
+}
+
+
+Time_ operator+(long hours, const Time_& a) {
+    Time_ tmp = a;
+    tmp += hours;
+    return tmp;
+}
+
+Time_ operator-(long hours, const Time_& a) {
+    Time_ tmp = a;
+    tmp -= hours;
+    return tmp;
+}
+
+ostream& operator<<(ostream& os, const Time_& t) {
+    if (t.hour < 10)
+        os << '0';
+    os << t.hour << ':';
+    if (t.minutes < 10)
+        os << '0';
+    os << t.minutes << ':';
+    if (t.seconds < 10)
+        os << '0';
+    os << t.seconds;
+    return os;
+}
+istream& operator>>(istream& is, Time_& t) {
+    int h, m, s;
+
+    is >> h >> m >> s;
+
+    if (is && h >= 0 && h <= 23 &&
+        m >= 0 && m <= 59 &&
+        s >= 0 && s <= 59) {
+
+        t.hour = h;
+        t.minutes = m;
+        t.seconds = s;
+        }
+
+    return is;
+}
+

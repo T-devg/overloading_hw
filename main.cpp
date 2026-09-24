@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Time.h"
-
+#include "Bus.h"
 using namespace std;
 
 int main()
@@ -47,6 +47,23 @@ int main()
     t3.showTime();
     //Перевірка
     cout << "\nIs t3 valid? " << (t3.valid() ? "yes" : "no") << endl;
+
+
+
+
+
+
+
+    //T-25
+    Time_ start(6, 0, 0, true);
+    Time_ finish(11, 0, 0, true);
+
+    Bus bus(start, finish, 30, 10);
+
+    cout << "Bus schedule:" << endl;
+    cout << "==============================" << endl;
+
+    bus.makeSchedule();
     return 0;
 }
 

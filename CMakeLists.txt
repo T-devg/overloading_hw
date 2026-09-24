@@ -7,4 +7,6 @@ add_executable(overloading_hw main.cpp
         Time.cpp
         Time.h
         Schedule.cpp
-        Schedule.h)
+        Schedule.h
+        Bus.cpp
+        Bus.h)
